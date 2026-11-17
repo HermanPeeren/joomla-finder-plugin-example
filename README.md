@@ -13,7 +13,7 @@ meant to be read.
 |---|---|
 | `plg_finder_recipes/` | The finder plugin. The adapter, its service provider, its form and its language files. |
 | `com_recipes/` | A deliberately small component holding the recipes the plugin indexes. |
-| `template-override/` | The Smart Search result layout for a recipe. Not part of the plugin — a plugin manifest cannot install a template override. |
+| `template-override/` | The Smart Search result layout for a recipe. Not part of the plugin: a plugin manifest cannot install a template override. |
 
 ## Installing it
 
@@ -40,7 +40,7 @@ to
 
     templates/cassiopeia/html/com_finder/search/default_recipe.php
 
-Without it Smart Search falls back to its own `default_result.php` — silently, so
+Without it Smart Search falls back to its own `default_result.php`, silently, so
 the absence looks like nothing happened rather than like an error.
 
 ## The three things that make a component indexable
@@ -51,8 +51,8 @@ The component contains no Smart Search code at all. What it does have:
    `description`, `instructions`, `published` and `created` aliased by the
    adapter to `summary`, `body`, `state` and `start_date`.
 2. **The standard content events**, with the context `com_recipes.recipe`.
-   These come free from core — `AdminModel::save()`, `AdminController::publish()`
-   and `AdminModel::delete()` dispatch them — as long as the component is built
+   These come free from core (`AdminModel::save()`, `AdminController::publish()`
+   and `AdminModel::delete()` dispatch them), as long as the component is built
    the ordinary way.
 3. **A `typeAlias`** on the table class, `com_recipes.recipe`, which is what tags
    and custom fields key off.

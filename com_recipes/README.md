@@ -8,14 +8,14 @@ that `plg_finder_recipes` has something real to adapt.
 The finder adapter needs three things from a component, and this demo provides
 exactly those:
 
-1. **A table with the columns the adapter selects** — `#__recipes`, created by
+1. **A table with the columns the adapter selects**: `#__recipes`, created by
    `admin/sql/install.mysql.utf8.sql`. The adapter's `getListQuery()` aliases
    `description → summary`, `instructions → body`, `published → state` and
    `created → start_date`; the extra `image`, `prep_time`, `servings` and
    `difficulty` columns are what the `default_recipe.php` result layout renders.
 
 2. **Standard content events with the context `com_recipes.recipe`.** Nothing in
-   this component fires them explicitly — they come free from core:
+   this component fires them explicitly; they come free from core:
    - `AdminModel::save()` → `onContentBeforeSave` / `onContentAfterSave`
    - `AdminController::publish()` → `onContentChangeState`
    - `AdminModel::delete()` → `onContentAfterDelete`
@@ -25,7 +25,7 @@ exactly those:
    them as `onFinder*` events, which is the only way the adapter ever hears
    about an edit.
 
-3. **A `typeAlias`** — `RecipeTable::__construct()` sets
+3. **A `typeAlias`**: `RecipeTable::__construct()` sets
    `com_recipes.recipe`, which is what `Helper::addCustomFields()` and the tags
    system key off.
 
